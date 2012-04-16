@@ -39,4 +39,12 @@ has postal_code => (
   predicate => 'has_postal_code',
 );
 
+has type => (
+  is => 'rw',
+  isa => 'Str',
+  lazy => 1,
+  default => sub { 'home' },
+);
+
+__PACKAGE__->meta->make_immutable;
 1;
