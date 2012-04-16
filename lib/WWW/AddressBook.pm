@@ -12,15 +12,15 @@ my %PROVIDERS = ( 'gmail.com' => 'Google',
 has ua => (
   is => 'ro',
   isa => 'LWP::UserAgent',
-  default => sub { LWP::UserAgent->new },
   lazy => 1,
+  default => sub { LWP::UserAgent->new },
 );
 
 has json => (
   is => 'ro',
   isa => 'JSON',
-  default => sub { JSON->new->utf8 },
   lazy => 1,
+  default => sub { JSON->new->utf8 },
 );
 
 has username => (
