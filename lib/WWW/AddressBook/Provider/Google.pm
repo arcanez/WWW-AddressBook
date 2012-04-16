@@ -3,6 +3,8 @@ use Moose::Role;
 use namespace::autoclean;
 use Net::Google::AuthSub;
 use WWW::AddressBook::Contact;
+use WWW::AddressBook::EmailAddress;
+use WWW::AddressBook::PhoneNumber;
 use WWW::AddressBook::PhysicalAddress;
 
 has authsub => (
