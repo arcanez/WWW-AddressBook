@@ -14,6 +14,8 @@ WriteMakefile(
     'JSON' => 0,
     'LWP' => 0,
     'Moose' => '0.93',
+    'MooseX::Types::Email' => 0,
+    'MooseX::UndefTolerant' => 0,
     'namespace::autoclean' => 0,
     'Net::Google::AuthSub' => 0,
     'URI' => 0,
