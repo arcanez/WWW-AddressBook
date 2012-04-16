@@ -1,5 +1,7 @@
 package WWW::AddressBook::PhysicalAddress;
 use Moose;
+use MooseX::UndefTolerant;
+use namespace::autoclean;
 
 has street1 => (
   is => 'rw',

@@ -1,5 +1,6 @@
 package WWW::AddressBook::Contact;
 use Moose;
+use MooseX::UndefTolerant;
 use namespace::autoclean;
 
 has first_name => (
