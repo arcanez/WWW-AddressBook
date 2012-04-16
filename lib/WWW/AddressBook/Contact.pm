@@ -5,16 +5,19 @@ use namespace::autoclean;
 has first_name => (
   is => 'rw',
   isa => 'Str',
+  predicate => 'has_first_name',
 );
 
 has last_name => (
   is => 'rw',
-  isa => 'Maybe[Str]',
+  isa => 'Str',
+  predicate => 'has_last_name',
 );
 
 has full_name => (
   is => 'rw',
   isa => 'Str',
+  predicate => 'has_full_name',
 );
 
 has physical_addresses => (
