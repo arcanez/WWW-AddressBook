@@ -29,6 +29,7 @@ sub _build_contacts {
   my @contacts;
   for my $c (@$content) {
     my %data;
+
     my $name = $c->{'gd$name'};
     $data{first_name} = $name->{'gd$givenName'}{'$t'} || $name->{'gd$fullName'}{'$t'} || $c->{title}{'$t'};
     $data{last_name} = $name->{'gd$familyName'}{'$t'};
@@ -47,6 +48,26 @@ sub _build_contacts {
       push @physical_addresses, $physical_address;
     }
     $data{physical_addresses} = \@physical_addresses;
+
+    my @phone_numbers;
+    for my $p (@{$c->{'gd$phoneNumber'} || []}) {
+      my $phone_number = WWW::AddressBook::PhoneNumber->new(
+        number => $p->{'$t'},
+        type => (split('#', $p->{rel}))[-1] || 'home',
+      );
+      push @phone_numbers, $phone_number;
+    }
+    $data{phone_numbers} = \@phone_numbers;
+
+    my @email_addresses;
+    for my $e (@{$c->{'gd$email'} || []}) {
+      my $email_address = WWW::AddressBook::EmailAddress->new(
+        email => $e->{address},
+        type => (split('#', $e->{rel}))[-1] || 'home',
+      );
+      push @email_addresses, $email_address;
+    }
+    $data{email_addresses} = \@email_addresses;
 
     my $contact = WWW::AddressBook::Contact->new(\%data);
     push @contacts, $contact;
